@@ -1,0 +1,78 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+    <div class="container">
+     <!--about star-->
+      <div class="row">
+        <div class="col-md-9  p-3">
+            <h2 class ="bg-danger text-white ">Customer details</h2>
+             {% for x in Products %}
+             {% if forloop.counter == 1 %}
+                <p><strong>Name:</strong>&nbsp;&nbsp; {{x.uid.first_name}}</p>
+                <p><strong>Mobile:</strong>&nbsp;&nbsp; 883175174</p>
+                <p><strong>Email:</strong>&nbsp;&nbsp; {{x.uid.email}}</p> 
+             {% endif %}
+             {% endfor %}
+            </div>
+
+            <div class="col-md-3 p-3 ">
+                <h2 class ="bg-danger text-white ">Payment</h2>
+                <p><strong>total({{n}}items):</strong>&nbsp;&nbsp; Rs..{{total}}</p>
+                <p><strong>price2:</strong>&nbsp;&nbsp;Rs.{{total}}</p>
+                <a href="/placeorder"><button class="btn btn-danger">place order </button></a>
+            </div>
+        </div>
+
+            <h5 class="bg-danger text-white p-3">Cart Details</h5>
+            <div class="row">
+                {% for x in Products %}
+                <div class="col-md-4 p-3 shadow">
+                    <img src="{{x.pid.pimage.url}}" class="card-img-top" alt="..." width="95%" height="250px">
+                </div>
+
+                <div class="col-md-8">
+                   <p><Strong>products Name:</Strong>&nbsp;&nbsp;{{x.pid.name}}</p> 
+                   <p><Strong>prices:</Strong>&nbsp;&nbsp;{{x.pid.price}}</p> 
+                   {% if x.pid.cat == 1 %}
+                   <p><Strong>category:</Strong>&nbsp;&nbsp;Mobile</p>
+                   {% elif x.pid.cat == 2 %}
+                   <p><Strong>category:</Strong>&nbsp;&nbsp;Shoes</p>
+                   {% else %}
+                   <p><Strong>category:</Strong>&nbsp;&nbsp;Cloths</p>
+                   {% endif %}
+                   <p><Strong>product detail:</Strong>&nbsp;&nbsp;{{x.pid.pdetails}}</p> 
+
+                   <p>
+                      <strong>QTY</strong>
+                      <a href="/updateqty/0/{{x.id}}"><button class="btn btn-danger">-</button></a>
+                      <input type="number" value="{{x.qty}}">
+                      <a href="/updateqty/1/{{x.id}}"><button class="btn btn-success">+</button></a>
+                   </p>
+
+                   <a href="/remove/{{x.id}}"><button class="btn btn-danger"> Delete</button> </a>
+                </div>
+                {% endfor %}
+
+              <!--
+                <div class="col-md-4">
+                    <img src="static/static/images/pro4.jpeg" class="card-img-top" alt="..."widht='250' height='250'>
+                </div>
+                <div class="col-md-8">
+                   <p><Strong>products Name:</Strong>&nbsp;&nbsp;taperware bottle </p> 
+                   <p><Strong>prices:</Strong>&nbsp;&nbsp;Rs950/-</p> 
+                   <p><Strong>category:</Strong>&nbsp;&nbsp;plastic</p> 
+                   <p><Strong>warranty:</Strong>&nbsp;&nbsp;1years</p> 
+                   <a href=""><button class="btn btn-danger"> Delete</button> </a>
+
+                </div>-->
+           
+            </div>
+
+        
+    
+      
+        </div>
+    
+        
+        {% endblock 'main' %}

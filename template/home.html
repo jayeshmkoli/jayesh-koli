@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div class="comtainer">
+        <div class="col-md-9 mt-3 bg-dark p-3 shadow">
+            <div class="row">
+              {% for x in Products %}
+              <div class="col-md-3 p-3 shadow">
+               <div class="card" style="width: 100%;">
+                <img src="{{x.pimage.url}}" class="card-img-top" alt="..." width="100%" height="250px">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.name}}</h5>
+                  <p class="card-text">{{x.price}}</p>
+                  {% if x.cat == 1 %}
+                      <p class="card-text">Whishkey</p>
+                  {% elif x.cat == 2 %}
+                      <p class="card-text">Rum</p>
+                  {% elif x.cat == 3 %}
+                      <p class="card-text">Vodka</p>
+                  {% else %}
+                      <p class="card-text">Wine</p>
+                  {% endif %}
+      
+                  <a href="/pdetails/{{x.id}}" class="btn btn-danger">See details</a>
+                </div>
+               </div>
+            </div>
+    </div>
+</body>
+</html>

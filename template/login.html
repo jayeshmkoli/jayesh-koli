@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="static/static/css/bootstrap.min.css">
+    
+</head>
+<body>
+    
+    <script src="static/static/js/bootstrap.min.js"></script>
+    <script src="static/static/js/popper.js"></script>
+   <!--<div class="container-sm box"></div> -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 mt-5 mx-auto shadow">
+                <h2 class="mb-5 text-center"> Login!</h2>
+                {% if errormsg %}
+                   <div class="alert alert-danger">
+                        {{errormsg}}
+                   </div>
+                {% endif %}
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="Input2" class="form-label"><strong>username</strong></label>
+                        <input type="email" class="form-control" id="Input2" name="uname" placeholder="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Input2" class="form-label"><strong> password</strong></label>
+                        <input type="password" class="form-control" id="Input3" name="upass" pslaceholder="password">
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn bg-warning">login</button>
+                        Already user?&nbsp;&nbsp;<a  href="/register" style="text-decoration:none;">login</a>
+                        <br><a  href="/forget" style="text-decoration:none;">ForgetPassword</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
